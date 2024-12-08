@@ -35,7 +35,7 @@ namespace hw2
             }
         }
         
-        public static void User-stringBuilder()
+        public static void UsertringBuilder()
         {
             User user = new User
             {

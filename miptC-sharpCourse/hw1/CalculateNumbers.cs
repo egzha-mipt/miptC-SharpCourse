@@ -1,14 +1,6 @@
-﻿using System;
-/*
-   Написать программу, в которой пользователь вводит в консоли 2 числа,
-   а программа в ответ выдает результат 4 операций:
-   Сложение, вычитание, умножение, деление.
+using System;
 
-   Каждую операцию реализовать через отдельную функцию.
-   Числа от пользователя получать через console.readline()
- */
-
-namespace hw1_hw2 // Note: actual namespace depends on the project name.
+namespace hw1 
 {
     internal class Numbers
     {
@@ -44,7 +36,7 @@ namespace hw1_hw2 // Note: actual namespace depends on the project name.
             }
         }
        
-        public static void Main(string[] args)
+        public static void CalculateNumbers(string[] args)
         {
             string numbers = Console.ReadLine();
             string[] parts = numbers.Split(" ");
