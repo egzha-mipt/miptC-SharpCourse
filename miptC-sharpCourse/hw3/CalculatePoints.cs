@@ -58,7 +58,7 @@ namespace hw3
             }
         }
         
-        static void Main()
+        static void calculatePoints()
         {
             Calculator calculator = new Calculator();
             Informer informer = new Informer();
