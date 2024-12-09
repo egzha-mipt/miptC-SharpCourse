@@ -96,15 +96,7 @@ namespace miptC_sharpCourse.hw4
             public IMovement Movement
             {
                 get { return _movement;}
-                set
-                {
-                    if (value == null)
-                    {
-                        _movement = new ElectricMovement();
-                    } else {
-                        _movement = value;
-                    }
-                }
+                set { _movement = value; }
             }
 
 
