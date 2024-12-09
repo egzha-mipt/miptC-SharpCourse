@@ -24,13 +24,13 @@ namespace miptC_sharpCourse.hw4
         {
             public int Capacity { get; set; }
 
-            protected void PersonGetIn()
+            public void PersonGetIn()
             {
                 Console.WriteLine("Person came in car");
                 Capacity = Capacity + 1;
             }
 
-            protected void PersonGetOut()
+            public void PersonGetOut()
             {
                 Console.WriteLine("Person get out from car");
                 Capacity = Capacity - 1;
@@ -96,7 +96,7 @@ namespace miptC_sharpCourse.hw4
             public IMovement Movement
             {
                 get { return _movement;}
-                set { _movement = value; }
+                set { _movement = value;}
             }
 
 
@@ -128,6 +128,7 @@ namespace miptC_sharpCourse.hw4
             VolvoMovement volvoMovement = new VolvoMovement();
             volvoV90Nilson.Movement = volvoMovement;
             volvoV90Nilson.Movement.TurnRight();
+            volvoV90Nilson.PersonGetIn();
         }
     }
 }
