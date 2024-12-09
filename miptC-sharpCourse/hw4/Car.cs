@@ -26,13 +26,13 @@ namespace miptC_sharpCourse.hw4
 
             protected void PersonGetIn()
             {
-                Console.WriteLine("PersonCameIn");
+                Console.WriteLine("Person came in car");
                 Capacity = Capacity + 1;
             }
 
             protected void PersonGetOut()
             {
-                Console.WriteLine("З Came Out");
+                Console.WriteLine("Person get out from car");
                 Capacity = Capacity - 1;
             }
             public abstract void MoveForward();
@@ -63,11 +63,51 @@ namespace miptC_sharpCourse.hw4
                 Console.WriteLine("Car turns right in electric style");
             }
         }
-
-        class Volvo : ACar //VolvoV90Nilson
+        
+        class VolvoMovement : IMovement
         {
-            private readonly ElectricMovement _movement = new ElectricMovement();
-            
+            public void MoveForward()
+            {
+                Console.WriteLine("Volvo moves forward");
+            }
+
+            public void MoveBack()
+            {
+                Console.WriteLine("Volvo moves back");
+            }
+
+            public void TurnLeft()
+            {
+                Console.WriteLine("Volvo turns left");
+            }
+
+            public void TurnRight()
+            {
+                Console.WriteLine("Volvo turns right");
+            }
+        }
+
+        class Volvo : ACar
+        {
+            // private readonly ElectricMovement _movement = new ElectricMovement();
+
+            private IMovement _movement = new ElectricMovement();
+
+            public IMovement Movement
+            {
+                get { return _movement;}
+                set
+                {
+                    if (value == null)
+                    {
+                        _movement = new ElectricMovement();
+                    } else {
+                        _movement = value;
+                    }
+                }
+            }
+
+
             public override void MoveForward()
             {
                 _movement.MoveForward();
@@ -89,11 +129,13 @@ namespace miptC_sharpCourse.hw4
             }
         }
         
-        
         static void Main()
         {
             Volvo volvoV90Nilson = new Volvo();
             volvoV90Nilson.TurnRight();
+            VolvoMovement volvoMovement = new VolvoMovement();
+            volvoV90Nilson.Movement = volvoMovement;
+            volvoV90Nilson.Movement.TurnRight();
         }
     }
 }
