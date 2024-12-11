@@ -4,7 +4,7 @@ namespace miptC_sharpCourse.hw4
     internal class Car
     {
 
-        interface ICar
+        public interface ICar
         {
             int Capacity { get; set; }
             
@@ -12,15 +12,15 @@ namespace miptC_sharpCourse.hw4
             void PersonCameOut(){}
         }
 
-        interface IMovement
+        public interface IMovement
         {
             void MoveForward();
             void MoveBack();
             void TurnLeft();
             void TurnRight();
         }
-        
-        abstract class ACar : ICar, IMovement
+
+        internal abstract class ACar : ICar, IMovement
         {
             public int Capacity { get; set; }
 
@@ -87,7 +87,7 @@ namespace miptC_sharpCourse.hw4
             }
         }
 
-        class Volvo : ACar
+        public class Volvo : ACar
         {
             // private readonly ElectricMovement _movement = new ElectricMovement();
 
@@ -121,7 +121,7 @@ namespace miptC_sharpCourse.hw4
             }
         }
         
-        static void Main()
+        void CarExample()
         {
             Volvo volvoV90Nilson = new Volvo();
             volvoV90Nilson.TurnRight();
