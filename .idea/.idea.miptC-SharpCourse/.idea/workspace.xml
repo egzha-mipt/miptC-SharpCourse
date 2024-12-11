@@ -8,10 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="971772f5-f857-4744-9830-1984ccdaa591" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/miptC-sharpCourse/hw2/User-StringBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/miptC-sharpCourse/hw2/User-StringBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miptC-sharpCourse/hw3/CalculatePoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/miptC-sharpCourse/hw3/CalculatePoints.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/miptC-sharpCourse/hw5/Insurance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.miptC-SharpCourse/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.miptC-SharpCourse/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.miptC-SharpCourse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.miptC-SharpCourse/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/miptC-sharpCourse/hw4/Car.cs" beforeDir="false" afterPath="$PROJECT_DIR$/miptC-sharpCourse/hw4/Car.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miptC-sharpCourse/miptC-sharpCourse.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/miptC-sharpCourse/miptC-sharpCourse.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +27,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/miptC-sharpCourse/hw1/CalculateNumbers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2pwFm9NSNsC7Z4H5FO55PvSdbjQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -40,12 +40,14 @@
   "keyToString": {
     ".NET Project.miptC-sharpCourse.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "hw5",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -79,6 +81,8 @@
       <updated>1733669386334</updated>
       <workItem from="1733669387382" duration="83000" />
       <workItem from="1733669513182" duration="3059000" />
+      <workItem from="1733940158242" duration="6000" />
+      <workItem from="1733940292100" duration="1150000" />
     </task>
     <servers />
   </component>
@@ -87,6 +91,9 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/miptC-sharpCourse/hw1" />
+    </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>
