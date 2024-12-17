@@ -8,10 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="971772f5-f857-4744-9830-1984ccdaa591" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/miptC-sharpCourse/hw5/Insurance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.miptC-SharpCourse/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.miptC-SharpCourse/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.miptC-SharpCourse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.miptC-SharpCourse/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miptC-SharpCourse.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/miptC-SharpCourse.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/miptC-sharpCourse/hw4/Car.cs" beforeDir="false" afterPath="$PROJECT_DIR$/miptC-sharpCourse/hw4/Car.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miptC-sharpCourse/hw5/Insurance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/miptC-sharpCourse/hw5/Insurance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miptC-sharpCourse/miptC-sharpCourse.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/miptC-sharpCourse/miptC-sharpCourse.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/miptC-sharpCourse/hw1/CalculateNumbers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a6b1457cbcf17db31a383ba49ef9bcc786cf3ef77146d997eee499b27a46d/Object.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -42,6 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "hw5",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,6 +86,8 @@
       <workItem from="1733669513182" duration="3059000" />
       <workItem from="1733940158242" duration="6000" />
       <workItem from="1733940292100" duration="1150000" />
+      <workItem from="1733945151134" duration="2595000" />
+      <workItem from="1734460465727" duration="4706000" />
     </task>
     <servers />
   </component>
