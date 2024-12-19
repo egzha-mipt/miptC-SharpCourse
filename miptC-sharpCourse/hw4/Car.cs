@@ -1,4 +1,6 @@
 
+using miptC_sharpCourse.hw5;
+
 namespace miptC_sharpCourse.hw4
 {
     internal class Car
@@ -7,12 +9,14 @@ namespace miptC_sharpCourse.hw4
         {
             int Capacity { get; } 
             int CurrentPassengers { get; set; }
+            // float EnginePower { get; set; } // есть будет, то EP надо делать публичным
             void PersonCameIn(){}
             void PersonCameOut(){}
         }
 
-        public interface IMovement
+        protected internal interface IMovement
         {
+            string EngineType { get; }
             void MoveForward();
             void MoveBack();
             void TurnLeft();
@@ -23,10 +27,13 @@ namespace miptC_sharpCourse.hw4
         {
             private readonly int _capacity;
             private int _currentPassengers;
+            private float _enginePower = 80.0f;
+            private string _engineType;
             protected ACar(int capacity, string name)
             {
                 if (capacity < 0 || capacity > 7)
                 {
+                    // throw new ArgumentException("Capacity must be between 0 and 7");
                     Console.Error.WriteLine(
                         $"STOP! In car must be between 0 and 7 passengers.{Environment.NewLine}" +
                         $"However, actual capacity: {capacity} {Environment.NewLine}");
@@ -42,6 +49,33 @@ namespace miptC_sharpCourse.hw4
             {
                 get => _currentPassengers;
                 set => _currentPassengers = value;
+            }
+
+            internal float EnginePower
+            {
+                get => _enginePower;
+                set => _enginePower = value;
+            }
+
+            public string EngineType
+            {
+                get => Movement?.EngineType ?? _engineType;
+                set
+                {
+                    _engineType = value;
+                    if (value == "Electric Engine")
+                    {
+                        Movement = new ElectricMovement();
+                    }
+                    else if (value == "Combustion Engine")
+                    {
+                        Movement = new VolvoMovement();
+                    }
+                    else
+                    {
+                        Movement = null;
+                    }
+                }
             }
 
             public void PersonGetIn()
@@ -62,10 +96,8 @@ namespace miptC_sharpCourse.hw4
                 } else {Console.WriteLine("There are no passengers to quitter the car");}
             }
 
-            public void HowManyPassengers()
-            {
+            public void HowManyPassengers() => 
                 Console.WriteLine($"There are {CurrentPassengers} passengers in the {Name}");
-            }
             
             public abstract void MoveForward();
             public abstract void MoveBack();
@@ -73,25 +105,27 @@ namespace miptC_sharpCourse.hw4
             public abstract void TurnRight();
         }
 
-        class ElectricMovement : IMovement
+        protected internal class ElectricMovement : IMovement
         {
+            public string EngineType { get; } = "Electric Engine";
             public void MoveForward() => Console.WriteLine("Electric car moves forward");
             public void MoveBack() => Console.WriteLine("Electric car moves back");
             public void TurnLeft() => Console.WriteLine("Electric car turns left");
             public void TurnRight() => Console.WriteLine("Electric car turns right");
         }
 
-        internal class VolvoMovement : IMovement
+        private class VolvoMovement : IMovement
         {
+            public string EngineType { get; } = "Combustion Engine";
             public void MoveForward() =>  Console.WriteLine("Volvo moves forward");
             public void MoveBack() =>  Console.WriteLine("Volvo moves back");
             public void TurnLeft() => Console.WriteLine("Volvo moves left");
             public void TurnRight() => Console.WriteLine("Volvo moves right");
         }
-
-        public class Volvo(int capacity, string name) : ACar(capacity, name) //primary constructor 
+        
+        protected internal class Volvo(int capacity, string name) : ACar(capacity, name) //primary constructor 
         {
-            private IMovement _movement = new ElectricMovement();
+            private IMovement _movement = new VolvoMovement();
             public IMovement Movement
             {
                 get => _movement;
@@ -103,11 +137,12 @@ namespace miptC_sharpCourse.hw4
             public override void TurnRight() => _movement.TurnRight();
         }
 
-        public void CarExample()
+        protected internal void CarExample()
         {
             Console.WriteLine($"{Environment.NewLine}!!! Car example code start.{Environment.NewLine}");
             // Volvo volvoV90Nilson = new Volvo(capacity: 4, name:$"{nameof(volvoV90Nilson)}");
             Volvo volvoV90Nilson = new Volvo(capacity: 8, name:$"Вольво V90 в модификации Нильсон");
+            
             volvoV90Nilson.CurrentPassengers = 1;
             volvoV90Nilson.TurnRight();
             VolvoMovement volvoMovement = new VolvoMovement();
@@ -133,7 +168,24 @@ namespace miptC_sharpCourse.hw4
             volvoV90Nilson.PersonGetOut();
             volvoV90Nilson.HowManyPassengers();
             volvoV90Nilson.PersonGetOut();
-            Console.WriteLine($"{Environment.NewLine}!!! Car example code end.{Environment.NewLine}");
+            
+          
+            // bool areEqual = electricCar1.Equals(electricCar2);
+            // Console.WriteLine($"electricCar1 equals electricCar2: {areEqual}");
+            //
+            // bool objEquals = obj1.Equals(obj2);
+            // Console.WriteLine($"obj1 equals obj2: {objEquals}");
+            // {System.ValueType obj4 = 42;}
+            // Int128 obj5 = 5;
+            // {
+            //     Int128 obj4 = 456465;
+            // }
+            // Console.WriteLine("{0}, {1}, {2}", obj2.GetType(), obj5.GetType(), obj1.GetType());
+            //
+            // sbyte bait = 1;
+            // ValueType vt = bait;
+            //
+            // Console.WriteLine($"{Environment.NewLine}!!! Car example code end.{Environment.NewLine}");
         }
     }
 }

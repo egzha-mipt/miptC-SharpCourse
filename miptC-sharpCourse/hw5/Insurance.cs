@@ -16,30 +16,75 @@ namespace miptC_sharpCourse.hw5
 {
     internal class Insurance
     {
-        class ElectricCar(int capacity, string name) : Car.Volvo(capacity, name)
+        private class ElectricCar(int capacity, string name) : Car.Volvo(capacity, name)
         {
-            public override bool Equals(object? obj)
-            {
-                bool isEqual = obj is ElectricCar;
-                return base.Equals(obj);
+            private Car.ElectricMovement _movement = new Car.ElectricMovement();
+            private Car.ElectricMovement Movement => _movement;
+
+            public override void TurnLeft() => Movement.TurnLeft();
+            public override void TurnRight() => Movement.TurnRight();
+            public override void MoveForward() => Movement.MoveForward();
+            public override void MoveBack() => Movement.MoveBack();
+
+            public override bool Equals(object? obj)      
+            {  
+                if (obj is not ElectricCar otherCar) return false;
+                float TOLERANCE = 0.1f;
+                return this.Name == otherCar.Name && 
+                       this.Capacity == otherCar.Capacity && 
+                       this.EngineType == otherCar.EngineType && 
+                       Math.Abs(this.EnginePower - otherCar.EnginePower) < TOLERANCE;
             }
+
+            public override int GetHashCode() => HashCode.Combine(Name, Capacity);
         }
+
+        internal static double CarInsurance(Car.ACar car)
+        {
+            double baseIns = 2500;
+            if (car.Movement.EngineType == "CombustionEngine")
+            {
+                baseIns += 5.0 * (car.EnginePower + 10 * car.Capacity);
+            }
+            else if (car.EngineType == "ElectricEngine")
+            {
+                baseIns += 1.5 * (car.EnginePower + 8 * car.Capacity);
+            }
+            else { baseIns = 5000; }
+            
+            return baseIns;
+        }
+
+
         static void Main()
         {
-            Car.Volvo volvoCar = new Car.Volvo(capacity: 4, name:$"{nameof(volvoCar)}");
-            Car.VolvoMovement volvoMovement = new Car.VolvoMovement();
-            volvoCar.Movement = volvoMovement;
-            ElectricCar electricCar1 = new ElectricCar(capacity: 4, name:$"{nameof(electricCar1)}");
-            ElectricCar electricCar2 = new ElectricCar(capacity: 4, name:$"{nameof(electricCar2)}");
+            //Volvo со сторым Equals() 
+            Car.Volvo volvoCar1 = new Car.Volvo(capacity: 9, name: "Volvo V90 Nilsson");
+            Car.Volvo volvoCar2 = new Car.Volvo(capacity: 9, name: "Volvo V90 Nilsson");
+            Car.Volvo volvoCar3 = new Car.Volvo(capacity: 6, name: "Volvo XC60")
+            {
+                EngineType = "CombustionEngine",
+            };
+            //Элетрички - с новым Equals()
+            ElectricCar electricCar1 = new ElectricCar(capacity: 4, name: "Volvo EX 90");
+            ElectricCar electricCar2 = new ElectricCar(capacity: 4, name: "Volvo EX 90");
+            
+            // Console.WriteLine($"Type of Engine: {electricCar1.Movement.EngineType}");
 
-            volvoCar.TurnLeft();
-            electricCar2.TurnLeft();
+            //Работа Equals
+            Console.WriteLine
+                             ($"Old: {{0}}, {{1}}, {{2}},{Environment.NewLine}New: {{3}}, {{4}}",
+                                volvoCar1.Equals(volvoCar2), // старый Equals
+                                volvoCar1.Equals(volvoCar1), 
+                                volvoCar1.Equals(volvoCar3),
+                                electricCar1.Equals(electricCar2), //измененный Equals
+                                electricCar1.Equals(electricCar1));
 
-            var tempBool = electricCar1.Equals(electricCar2);
-            Console.WriteLine(tempBool);
+            Console.WriteLine(CarInsurance(volvoCar1));
+            Console.WriteLine(CarInsurance(volvoCar3));
 
-            Car car = new Car();
-            car.CarExample();
+            // Car car = new Car();
+            // car.CarExample();
         }
     }
 }
