@@ -61,7 +61,7 @@ namespace miptC_sharpCourse.hw5
 
             //Работа Equals
             Console.WriteLine
-                             ($"Old Equals(): {{0}}, {{1}}, {{2}},{Environment.NewLine}New Equals(): {{3}}, {{4}}{Environment.NewLine}",
+                             ($"Volvo Equals():    {{0}}, {{1}}, {{2}},{Environment.NewLine}Electric Equals(): {{3}}, {{4}}{Environment.NewLine}",
                                 volvoCar1.Equals(volvoCar2), // старый Equals
                                 volvoCar1.Equals(volvoCar1), 
                                 volvoCar1.Equals(volvoCar3),

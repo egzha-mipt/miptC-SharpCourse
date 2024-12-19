@@ -125,6 +125,13 @@ namespace miptC_sharpCourse.hw4
             public override void MoveBack() => _movement.MoveBack();
             public override void TurnLeft() => _movement.TurnLeft();
             public override void TurnRight() => _movement.TurnRight();
+            
+            public override bool Equals(object? obj)      
+            {  
+                if (obj is not Volvo otherCar) return false;
+                return this.Capacity == otherCar.Capacity &&
+                       this.EngineType == otherCar.EngineType;
+            }
         }
 
         protected internal void CarExample()
