@@ -16,14 +16,31 @@ namespace miptC_sharpCourse.hw4
 
         protected internal interface IMovement
         {
-            string EngineType { get; }
+            string EngineType { get; set; }
             void MoveForward();
             void MoveBack();
             void TurnLeft();
             void TurnRight();
         }
 
-        internal abstract class ACar : ICar, IMovement
+        protected internal class ElectricMovement : IMovement
+        {
+            public string EngineType { get; set;  } = "Electric Engine";
+            public void MoveForward() => Console.WriteLine("Electric car moves forward");
+            public void MoveBack() => Console.WriteLine("Electric car moves back");
+            public void TurnLeft() => Console.WriteLine("Electric car turns left");
+            public void TurnRight() => Console.WriteLine("Electric car turns right");
+        }
+
+        private class VolvoMovement : IMovement
+        {
+            public string EngineType { get; set; } = "Combustion Engine";
+            public void MoveForward() =>  Console.WriteLine("Volvo moves forward");
+            public void MoveBack() =>  Console.WriteLine("Volvo moves back");
+            public void TurnLeft() => Console.WriteLine("Volvo moves left");
+            public void TurnRight() => Console.WriteLine("Volvo moves right");
+        }
+        internal abstract class ACar : ICar
         {
             private readonly int _capacity;
             private int _currentPassengers;
@@ -33,18 +50,17 @@ namespace miptC_sharpCourse.hw4
             {
                 if (capacity < 0 || capacity > 7)
                 {
-                    // throw new ArgumentException("Capacity must be between 0 and 7");
                     Console.Error.WriteLine(
                         $"STOP! In car must be between 0 and 7 passengers.{Environment.NewLine}" +
                         $"However, actual capacity: {capacity} {Environment.NewLine}");
                 }
                 _capacity = capacity;
                 Name = name;
-                _currentPassengers = 0;
             }
 
             public string Name { get; }
             public int Capacity => _capacity;
+
             public int CurrentPassengers
             {
                 get => _currentPassengers;
@@ -57,27 +73,12 @@ namespace miptC_sharpCourse.hw4
                 set => _enginePower = value;
             }
 
-            public string EngineType
+            internal string EngineType
             {
-                get => Movement?.EngineType ?? _engineType;
-                set
-                {
-                    _engineType = value;
-                    if (value == "Electric Engine")
-                    {
-                        Movement = new ElectricMovement();
-                    }
-                    else if (value == "Combustion Engine")
-                    {
-                        Movement = new VolvoMovement();
-                    }
-                    else
-                    {
-                        Movement = null;
-                    }
-                }
+                get => _engineType;
+                set => _engineType = value;
             }
-
+            
             public void PersonGetIn()
             {
                 if (CurrentPassengers < Capacity)
@@ -104,32 +105,21 @@ namespace miptC_sharpCourse.hw4
             public abstract void TurnLeft();
             public abstract void TurnRight();
         }
-
-        protected internal class ElectricMovement : IMovement
-        {
-            public string EngineType { get; } = "Electric Engine";
-            public void MoveForward() => Console.WriteLine("Electric car moves forward");
-            public void MoveBack() => Console.WriteLine("Electric car moves back");
-            public void TurnLeft() => Console.WriteLine("Electric car turns left");
-            public void TurnRight() => Console.WriteLine("Electric car turns right");
-        }
-
-        private class VolvoMovement : IMovement
-        {
-            public string EngineType { get; } = "Combustion Engine";
-            public void MoveForward() =>  Console.WriteLine("Volvo moves forward");
-            public void MoveBack() =>  Console.WriteLine("Volvo moves back");
-            public void TurnLeft() => Console.WriteLine("Volvo moves left");
-            public void TurnRight() => Console.WriteLine("Volvo moves right");
-        }
         
         protected internal class Volvo(int capacity, string name) : ACar(capacity, name) //primary constructor 
         {
             private IMovement _movement = new VolvoMovement();
+            private string _engineType;
             public IMovement Movement
             {
                 get => _movement;
                 set => _movement = value;
+            }
+
+            public string EngineType
+            {
+                get => _engineType;
+                set => Movement.EngineType = value;
             }
             public override void MoveForward() => _movement.MoveForward();
             public override void MoveBack() => _movement.MoveBack();
@@ -186,6 +176,25 @@ namespace miptC_sharpCourse.hw4
             // ValueType vt = bait;
             //
             // Console.WriteLine($"{Environment.NewLine}!!! Car example code end.{Environment.NewLine}");
+            
+            
+            
+            
+            // internal static double CarInsurance(Car.ACar car)
+            // {
+            //     double baseIns = 2500;
+            //     if (car.EngineType == "Combustion Engine")
+            //     {
+            //         baseIns += 5.0 * (car.EnginePower + 10 * car.Capacity);
+            //     }
+            //     else if (car.EngineType == "Electric Engine")
+            //     {
+            //         baseIns += 1.5 * (car.EnginePower + 8 * car.Capacity);
+            //     }
+            //     else { baseIns = 5000; }
+            //
+            //     return baseIns;
+            // }
         }
     }
 }
